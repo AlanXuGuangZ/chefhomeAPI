@@ -1,0 +1,15 @@
+server:
+  port: 8088
+
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://139.9.218.11:3306/chefhome?useUnicode=true&characterEncoding=UTF-8&serverTimezone=UTC
+    username: root
+    password: qo6521QOG?
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+  thymeleaf:
+    cache: false

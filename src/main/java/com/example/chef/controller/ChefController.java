@@ -25,8 +25,9 @@ public class ChefController {
     /**
      * 查询所有厨师接口
      */
-    @GetMapping(value ="/chef")
+    @GetMapping(value = "/chef")
     public HttpResult<Chef> chefList() {
+
         return HttpResultUtil.success(chefRepository.findAll());
     }
 

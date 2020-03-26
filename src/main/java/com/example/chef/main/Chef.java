@@ -1,22 +1,27 @@
 package com.example.chef.main;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 /**
  * 创建厨师表
  * created by tony on 2020/3/26 00:25
  */
 @Entity
+@Table(name = "chef")
 public class Chef {
     @Id
     @GeneratedValue
+    @Column(name = "name")
     private String name;
+    @Column(name = "good")
     private String good;
+    @Column(name = "star")
     private Integer star;
+    @Column(name = "money")
     private String money;
+    @Column(name = "introduce")
     private String introduce;
+    @Column(name = "pick")
     private Integer pick;
     public Chef(){}
 
