@@ -1,6 +1,6 @@
-package com.example.chef.repository;
+package com.example.chefhome.repository;
 
-import com.example.chef.main.Chef;
+import com.example.chefhome.main.Chef;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 /**

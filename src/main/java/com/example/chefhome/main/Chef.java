@@ -1,4 +1,4 @@
-package com.example.chef.main;
+package com.example.chefhome.main;
 
 import javax.persistence.*;
 

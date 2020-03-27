@@ -1,14 +1,13 @@
-package com.example.chef.controller;
+package com.example.chefhome.controller;
 
 
-import com.example.chef.main.Chef;
-import com.example.chef.main.HttpResult;
-import com.example.chef.repository.ChefRepository;
-import com.example.chef.units.HttpResultUtil;
+import com.example.chefhome.main.Chef;
+import com.example.chefhome.main.HttpResult;
+import com.example.chefhome.repository.ChefRepository;
+import com.example.chefhome.units.HttpResultUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.*;
 
 
@@ -27,6 +26,8 @@ public class ChefController {
      */
     @GetMapping(value = "/chef")
     public HttpResult<Chef> chefList() {
+
+        logger.info("获取厨师数据");
 
         return HttpResultUtil.success(chefRepository.findAll());
     }
