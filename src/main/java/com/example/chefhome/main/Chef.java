@@ -1,6 +1,8 @@
 package com.example.chefhome.main;
 
 import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  * 创建厨师表
@@ -9,8 +11,9 @@ import javax.persistence.*;
 @Entity
 @Table(name = "chef")
 public class Chef {
-    @Id
-    @GeneratedValue
+    @Id //主键
+    @GeneratedValue(strategy = GenerationType.IDENTITY) //自增主键
+    private Integer id;
     @Column(name = "name")
     private String name;
     @Column(name = "good")
@@ -25,11 +28,23 @@ public class Chef {
     private Integer pick;
     public Chef(){}
 
+
+//    private Set<Food> foods = new HashSet<Food>();
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
     public String getName() {
         return name;
-    }
-    public void setName() {
-        this.name = name;
     }
 
     public String getGood() {
