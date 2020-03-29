@@ -23,9 +23,6 @@ public class Food {
     @Column(name = "image")
     private String image;
 
-    @Column(name = "video")
-    private String video;
-
     @ManyToMany(targetEntity = Chef.class)
     @JoinTable(name = "foodchef", joinColumns = {@JoinColumn(name = "fid",referencedColumnName = "id")},
             inverseJoinColumns = {@JoinColumn(name = "cid",referencedColumnName = "id")})
@@ -75,14 +72,6 @@ public class Food {
 
     public void setImage(String image) {
         this.image = image;
-    }
-
-    public String getVideo() {
-        return video;
-    }
-
-    public void setVideo(String video) {
-        this.video = video;
     }
 
     public FoodType getFoodType() {
