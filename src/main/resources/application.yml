@@ -1,18 +1,18 @@
-#server:
-#  port: 8088
-#  servlet:
-#    context-path: /katrina
+server:
+  port: 8088
+  servlet:
+    context-path: /katrina
 
 
 spring:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-#    url: jdbc:mysql://139.9.218.11:3306/katrina?useUnicode=true&characterEncoding=UTF-8&serverTimezone=UTC
-#    username: root
-#    password: qo6521QOG?
-    url: jdbc:mysql://localhost:3306/test
+    url: jdbc:mysql://139.9.218.11:3306/katrina?useUnicode=true&characterEncoding=UTF-8&serverTimezone=UTC
     username: root
-    password: 001992
+    password: qo6521QOG?
+#    url: jdbc:mysql://localhost:3306/test?useUnicode=true&characterEncoding=UTF-8&serverTimezone=UTC
+#    username: root
+#    password: 001992
   jpa:
     hibernate:
       ddl-auto: update

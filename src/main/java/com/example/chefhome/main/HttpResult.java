@@ -1,8 +1,6 @@
 package com.example.chefhome.main;
 
-/**
- * created by tony on 2020/3/26 00:05
- */
+
 public class HttpResult<T> {
     //错误码
     private Integer cod;

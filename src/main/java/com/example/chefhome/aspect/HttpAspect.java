@@ -10,10 +10,6 @@ import org.springframework.web.context.request.ServletRequestAttributes;
 
 import javax.servlet.http.HttpServletRequest;
 
-/**
- * Created by v-xuyongbiao@meizu.com on 2020/3/27 上午10:29.
- * 统一处理Http请求日志
- */
 @Aspect
 @Component
 public class HttpAspect {

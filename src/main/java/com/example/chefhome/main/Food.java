@@ -3,6 +3,8 @@ package com.example.chefhome.main;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Table(name = "food")
@@ -15,9 +17,6 @@ public class Food {
     @Column(name = "name")
     private String name;
 
-//    @Column(name = "tid")
-//    private String tid;
-
     @Column(name = "detail")
     private String detail;
 
@@ -27,10 +26,24 @@ public class Food {
     @Column(name = "video")
     private String video;
 
+    @ManyToMany(targetEntity = Chef.class)
+    @JoinTable(name = "foodchef", joinColumns = {@JoinColumn(name = "fid",referencedColumnName = "id")},
+            inverseJoinColumns = {@JoinColumn(name = "cid",referencedColumnName = "id")})
+    private Set<Chef> chefs = new HashSet<Chef>();
+
+
     @JsonIgnore
     @ManyToOne(targetEntity = FoodType.class,fetch = FetchType.LAZY)
     @JoinColumn(name = "tid",referencedColumnName = "id")
     private FoodType foodType;
+
+    public Set<Chef> getChefs() {
+        return chefs;
+    }
+
+    public void setChefs(Set<Chef> chefs) {
+        this.chefs = chefs;
+    }
 
     public Integer getId() {
         return id;

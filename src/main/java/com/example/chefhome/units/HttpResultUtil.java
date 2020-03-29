@@ -16,14 +16,16 @@ public class HttpResultUtil {
         httpResult.setData(object);
         return httpResult;
     }
-    public static HttpResult success() {
-        return success();
+    public static HttpResult success(Integer cod,String msg) {
+        HttpResult httpResult = new HttpResult();
+        httpResult.setCod(cod);
+        httpResult.setMsg(msg);
+        return httpResult;
     }
     public static HttpResult error(Integer cod,String msg) {
         HttpResult httpResult = new HttpResult();
         httpResult.setCod(cod);
         httpResult.setMsg(msg);
-        httpResult.setMsg(null);
         return httpResult;
     }
 

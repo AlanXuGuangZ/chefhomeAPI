@@ -1,8 +1,6 @@
 package com.example.chefhome.controller;
 
-import com.example.chefhome.main.Chef;
 import com.example.chefhome.main.Food;
-import com.example.chefhome.main.FoodType;
 import com.example.chefhome.main.HttpResult;
 import com.example.chefhome.repository.FoodRepository;
 import com.example.chefhome.repository.FoodTypeRepository;
@@ -28,18 +26,26 @@ public class FoodController {
 
     private final static Logger logger = LoggerFactory.getLogger(FoodController.class);
 
-    /**
-     * 查询所有菜品接口
-     */
+    // 查询
     @GetMapping(value = "/food")
     public HttpResult<Food> foodList() {
-        logger.info("获取菜品数据");
-        return HttpResultUtil.success(foodRepository.findAll());
+        logger.info("根据菜品搜索厨师数据");
+        try {
+            return HttpResultUtil.success(foodRepository.findAll());
+        } catch (Exception e){
+            return HttpResultUtil.error(400,"获取菜品数据失败: " + e.toString());
+        }
     }
 
+    // 查询
     @GetMapping(value = "/food/{tid}")
     public HttpResult<Food> foodFromTypeList(@PathVariable("tid") Integer tid){
-        return HttpResultUtil.success(foodRepository.findOne(tid));
+        logger.info("根据菜品id搜索厨师数据");
+        try {
+            return HttpResultUtil.success(foodRepository.findOne(tid));
+        } catch (Exception e){
+            return HttpResultUtil.error(400,"获取菜品id搜索厨师数据失败: " + e.toString());
+        }
     }
 
 

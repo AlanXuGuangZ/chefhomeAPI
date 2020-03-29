@@ -5,8 +5,8 @@ import java.util.HashSet;
 import java.util.Set;
 
 @Entity
-@Table(name = "foodtype")
-public class FoodType {
+@Table(name = "feasttype")
+public class FeastType {
 
     @Id //主键
     @GeneratedValue(strategy = GenerationType.IDENTITY) //自增主键
@@ -15,19 +15,16 @@ public class FoodType {
     @Column(name = "name")
     private String name;
 
-//    @Column(name = "test")
-//    private String test;
+    @OneToMany(mappedBy = "feastType",cascade = CascadeType.ALL,fetch = FetchType.EAGER)
+    private Set<Feast> feasts = new HashSet<Feast>();
 
-    @OneToMany(mappedBy = "foodType",cascade = CascadeType.ALL,fetch = FetchType.EAGER)
-    private Set<Food> foods = new HashSet<Food>();
+    public Set<Feast> getFeasts() {
+        return feasts;
+    }
 
-//    public String getTest() {
-//        return test;
-//    }
-//
-//    public void setTest(String test) {
-//        this.test = test;
-//    }
+    public void setFeasts(Set<Feast> feasts) {
+        this.feasts = feasts;
+    }
 
     public Integer getId() {
         return id;
@@ -43,13 +40,5 @@ public class FoodType {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public Set<Food> getFoods() {
-        return foods;
-    }
-
-    public void setFoods(Set<Food> foods) {
-        this.foods = foods;
     }
 }

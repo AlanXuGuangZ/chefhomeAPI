@@ -1,5 +1,7 @@
 package com.example.chefhome.main;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
@@ -29,7 +31,17 @@ public class Chef {
     public Chef(){}
 
 
-//    private Set<Food> foods = new HashSet<Food>();
+    @JsonIgnore
+    @ManyToMany(mappedBy = "chefs")
+    private Set<Food> foods = new HashSet<Food>();
+
+    public Set<Food> getFoods() {
+        return foods;
+    }
+
+    public void setFoods(Set<Food> foods) {
+        this.foods = foods;
+    }
 
     public Integer getId() {
         return id;
