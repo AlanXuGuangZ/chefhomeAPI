@@ -1,5 +1,7 @@
 package com.example.chefhome.main;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 
 @Entity
@@ -39,6 +41,19 @@ public class Order {
 
     @Column(name = "chefname")
     private String chefname;
+
+//    @JsonIgnore
+//    @ManyToOne(targetEntity = User.class,fetch = FetchType.LAZY)
+//    @JoinColumn(name = "oid",referencedColumnName = "id")
+//    private User ouser;
+
+//    public User getOuser() {
+//        return ouser;
+//    }
+//
+//    public void setOuser(User ouser) {
+//        this.ouser = ouser;
+//    }
 
     public Integer getId() {
         return id;

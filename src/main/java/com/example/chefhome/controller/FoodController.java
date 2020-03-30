@@ -39,7 +39,7 @@ public class FoodController {
 
     // 查询
     @GetMapping(value = "/food/{tid}")
-    public HttpResult<Food> foodFromTypeList(@PathVariable("tid") Integer tid){
+    public HttpResult<Food> idFoodList(@PathVariable("tid") Integer tid){
         logger.info("根据菜品id搜索厨师数据");
         try {
             return HttpResultUtil.success(foodRepository.findOne(tid));

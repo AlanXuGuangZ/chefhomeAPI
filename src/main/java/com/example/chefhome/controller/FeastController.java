@@ -1,5 +1,6 @@
 package com.example.chefhome.controller;
 
+import com.example.chefhome.main.Feast;
 import com.example.chefhome.main.HttpResult;
 import com.example.chefhome.repository.FeastRepository;
 import com.example.chefhome.units.HttpResultUtil;
@@ -19,7 +20,7 @@ public class FeastController {
 
     // 查询
     @GetMapping(value = "/feast")
-    public HttpResult<FeastController> feastList() {
+    public HttpResult<Feast> feastList() {
         logger.info("获取宴席数据");
         try{
             return HttpResultUtil.success(feastRepository.findAll());

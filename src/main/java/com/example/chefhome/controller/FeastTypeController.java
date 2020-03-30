@@ -1,5 +1,6 @@
 package com.example.chefhome.controller;
 
+import com.example.chefhome.main.FeastType;
 import com.example.chefhome.main.HttpResult;
 import com.example.chefhome.repository.FeastTypeRepository;
 import com.example.chefhome.units.HttpResultUtil;
@@ -20,7 +21,7 @@ public class FeastTypeController {
 
     // 查询
     @GetMapping(value = "/feastType")
-    public HttpResult<FeastTypeController> feastTypeList() {
+    public HttpResult<FeastType> feastTypeList() {
         logger.info("获取宴席类型数据");
         try{
             return HttpResultUtil.success(feastTypeRepository.findAll());
@@ -30,7 +31,7 @@ public class FeastTypeController {
     }
 
     @GetMapping(value = "/feastType/{fid}")
-    public HttpResult<FeastTypeController> feastTypeList(@PathVariable("fid") Integer fid) {
+    public HttpResult<FeastType> idFeastTypeList(@PathVariable("fid") Integer fid) {
         logger.info("获取宴席id类型数据");
         try{
             return HttpResultUtil.success(feastTypeRepository.findOne(fid));

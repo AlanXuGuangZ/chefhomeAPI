@@ -3,7 +3,6 @@ package com.example.chefhome.controller;
 
 import com.example.chefhome.main.Chef;
 import com.example.chefhome.main.HttpResult;
-import com.example.chefhome.main.Order;
 import com.example.chefhome.repository.ChefRepository;
 import com.example.chefhome.units.HttpResultUtil;
 import org.slf4j.Logger;
@@ -35,7 +34,7 @@ public class ChefController {
     }
 
     @GetMapping(value = "/chef/{cid}")
-    public HttpResult<Chef> chefList(@PathVariable("cid") Integer cid) {
+    public HttpResult<Chef> idChefList(@PathVariable("cid") Integer cid) {
         logger.info("获取厨师id数据");
         try {
             return HttpResultUtil.success(chefRepository.findOne(cid));
@@ -46,7 +45,7 @@ public class ChefController {
 
     //更新
     @PostMapping("/chef/update/{id}")
-    public HttpResult<Order> updateOrder(@PathVariable("id") Integer id, Chef chefIn){
+    public HttpResult<Chef> updateChef(@PathVariable("id") Integer id, Chef chefIn){
         logger.info("更新厨师数据");
         try {
             Chef chefOut = chefRepository.getOne(id);

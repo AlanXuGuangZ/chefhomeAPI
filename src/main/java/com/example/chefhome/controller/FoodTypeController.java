@@ -22,11 +22,11 @@ public class FoodTypeController {
     @Autowired
     FoodRepository foodRepository;
 
-    private final static Logger logger = LoggerFactory.getLogger(FoodTypeRepository.class);
+    private final static Logger logger = LoggerFactory.getLogger(FoodTypeController.class);
 
     // 查询
     @GetMapping(value = "/foodType")
-    public HttpResult<FoodTypeController> foodTypeList() {
+    public HttpResult<FoodType> foodTypeList() {
         logger.info("获取菜品类型搜索菜品数据");
         try{
             return HttpResultUtil.success(foodTypeRepository.findAll());
@@ -36,7 +36,7 @@ public class FoodTypeController {
     }
 
     @GetMapping(value = "/foodType/{fid}")
-    public HttpResult<Food> foodFromTypeList(@PathVariable("fid") Integer fid){
+    public HttpResult<FoodType> idFoodTypeList(@PathVariable("fid") Integer fid){
         logger.info("获取菜品类型id搜索菜品数据");
         try {
             return HttpResultUtil.success(foodTypeRepository.findOne(fid));
@@ -59,7 +59,7 @@ public class FoodTypeController {
 
     //更新
     @PostMapping("/foodType/update/{id}")
-    public HttpResult<Order> updateOrder(@PathVariable("id") Integer id,FoodType foodTypeIn){
+    public HttpResult<FoodType> updateOrder(@PathVariable("id") Integer id,FoodType foodTypeIn){
         logger.info("更新菜品类型数据");
         try {
             FoodType foodTypeOut = foodTypeRepository.getOne(id);
