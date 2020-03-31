@@ -7,9 +7,11 @@ import com.example.chefhome.repository.FoodTypeRepository;
 import com.example.chefhome.units.HttpResultUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
@@ -45,6 +47,19 @@ public class FoodController {
             return HttpResultUtil.success(foodRepository.findOne(tid));
         } catch (Exception e){
             return HttpResultUtil.error(400,"获取菜品id搜索厨师数据失败: " + e.toString());
+        }
+    }
+
+    //更新
+    @PostMapping("/food/update/{id}")
+    public HttpResult<Food> updateChef(@PathVariable("id") Integer id, Food foodIn){
+        logger.info("更新菜品数据");
+        try {
+            Food foodOut = foodRepository.getOne(id);
+            BeanUtils.copyProperties(foodIn, foodOut, OrderController.getNullPropertyNames(foodIn));
+            return HttpResultUtil.success(foodRepository.save(foodOut));
+        } catch (Exception e){
+            return HttpResultUtil.error(400,"更新菜品数据失败: " + e.toString());
         }
     }
 

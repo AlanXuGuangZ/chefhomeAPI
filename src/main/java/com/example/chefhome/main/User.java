@@ -1,6 +1,8 @@
 package com.example.chefhome.main;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
@@ -14,29 +16,31 @@ public class User {
     private Integer id;
 
     @Column(name = "phonenum")
-    private int phonenum;
+    private String phonenum;
 
+    @JsonIgnore
+    @OneToMany(mappedBy = "ouser",cascade = CascadeType.ALL,fetch = FetchType.EAGER)
+    private Set<UserOrder> userOrders = new HashSet<UserOrder>();
+
+    public Set<UserOrder> getUserOrders() {
+        return userOrders;
+    }
+
+    public void setUserOrders(Set<UserOrder> userOrders) {
+        this.userOrders = userOrders;
+    }
+
+    @JsonIgnore
     @OneToMany(mappedBy = "auser",cascade = CascadeType.ALL,fetch = FetchType.EAGER)
-    private Set<Address> addresses = new HashSet<Address>();
+    private Set<UserAddress> userAddresses = new HashSet<UserAddress>();
 
-//    @OneToMany(mappedBy = "ouser",cascade = CascadeType.ALL,fetch = FetchType.EAGER)
-//    private Set<Order> orders = new HashSet<Order>();
-
-    public Set<Address> getAddresses() {
-        return addresses;
+    public Set<UserAddress> getUserAddresses() {
+        return userAddresses;
     }
 
-    public void setAddresses(Set<Address> addresses) {
-        this.addresses = addresses;
+    public void setUserAddresses(Set<UserAddress> userAddresses) {
+        this.userAddresses = userAddresses;
     }
-
-//    public Set<Order> getOrders() {
-//        return orders;
-//    }
-//
-//    public void setOrders(Set<Order> orders) {
-//        this.orders = orders;
-//    }
 
     public Integer getId() {
         return id;
@@ -46,11 +50,11 @@ public class User {
         this.id = id;
     }
 
-    public int getPhonenum() {
+    public String getPhonenum() {
         return phonenum;
     }
 
-    public void setPhonenum(int phonenum) {
+    public void setPhonenum(String phonenum) {
         this.phonenum = phonenum;
     }
 }

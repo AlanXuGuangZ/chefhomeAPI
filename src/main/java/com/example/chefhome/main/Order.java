@@ -1,11 +1,11 @@
 package com.example.chefhome.main;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
 import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
-@Table(name = "order")
+@Table(name = "orders")
 public class Order {
 
     @Id //主键
@@ -21,8 +21,8 @@ public class Order {
     @Column(name = "orderstat")
     private String orderstat;
 
-    @Column(name = "date")
-    private String date;
+    @Column(name = "datetime")
+    private String datetime;
 
     @Column(name = "message")
     private String message;
@@ -42,18 +42,16 @@ public class Order {
     @Column(name = "chefname")
     private String chefname;
 
-//    @JsonIgnore
-//    @ManyToOne(targetEntity = User.class,fetch = FetchType.LAZY)
-//    @JoinColumn(name = "oid",referencedColumnName = "id")
-//    private User ouser;
+    @OneToMany(mappedBy = "order",cascade = CascadeType.ALL,fetch = FetchType.EAGER)
+    private Set<UserOrder> userOrders = new HashSet<UserOrder>();
 
-//    public User getOuser() {
-//        return ouser;
-//    }
-//
-//    public void setOuser(User ouser) {
-//        this.ouser = ouser;
-//    }
+    public Set<UserOrder> getUserOrders() {
+        return userOrders;
+    }
+
+    public void setUserOrders(Set<UserOrder> userOrders) {
+        this.userOrders = userOrders;
+    }
 
     public Integer getId() {
         return id;
@@ -87,12 +85,12 @@ public class Order {
         this.orderstat = orderstat;
     }
 
-    public String getDate() {
-        return date;
+    public String getDatetime() {
+        return datetime;
     }
 
-    public void setDate(String date) {
-        this.date = date;
+    public void setDatetime(String datetime) {
+        this.datetime = datetime;
     }
 
     public String getMessage() {

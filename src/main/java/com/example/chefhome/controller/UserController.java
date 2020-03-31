@@ -1,6 +1,5 @@
 package com.example.chefhome.controller;
 
-import com.example.chefhome.main.Food;
 import com.example.chefhome.main.HttpResult;
 import com.example.chefhome.main.User;
 import com.example.chefhome.repository.AddressRepository;
@@ -37,11 +36,11 @@ public class UserController {
 
     @GetMapping(value = "/user/{uid}")
     public HttpResult<User> idUserList(@PathVariable("uid") Integer uid){
-        logger.info("获取用户id搜索地址,订单数据");
+        logger.info("获取用户id地址数据");
         try {
             return HttpResultUtil.success(userRepository.findOne(uid));
         } catch (Exception e){
-            return HttpResultUtil.error(400,"获取用户id搜索地址,订单数据失败: " + e.toString());
+            return HttpResultUtil.error(400,"获取用户id地址数据失败: " + e.toString());
         }
     }
 

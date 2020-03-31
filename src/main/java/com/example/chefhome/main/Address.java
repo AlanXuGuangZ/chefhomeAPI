@@ -1,8 +1,8 @@
 package com.example.chefhome.main;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
 import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Table(name = "address")
@@ -15,22 +15,20 @@ public class Address {
     private String location;
 
     @Column(name = "phone")
-    private int phone;
+    private String phone;
 
     @Column(name = "name")
     private String name;
 
-    @JsonIgnore
-    @ManyToOne(targetEntity = User.class,fetch = FetchType.LAZY)
-    @JoinColumn(name = "aid",referencedColumnName = "id")
-    private User auser;
+    @OneToMany(mappedBy = "address",cascade = CascadeType.ALL,fetch = FetchType.EAGER)
+    private Set<UserAddress> userAddresses = new HashSet<UserAddress>();
 
-    public User getAuser() {
-        return auser;
+    public Set<UserAddress> getUserAddresses() {
+        return userAddresses;
     }
 
-    public void setAuser(User auser) {
-        this.auser = auser;
+    public void setUserAddresses(Set<UserAddress> userAddresses) {
+        this.userAddresses = userAddresses;
     }
 
     public Integer getId() {
@@ -49,11 +47,11 @@ public class Address {
         this.location = location;
     }
 
-    public int getPhone() {
+    public String getPhone() {
         return phone;
     }
 
-    public void setPhone(int phone) {
+    public void setPhone(String phone) {
         this.phone = phone;
     }
 

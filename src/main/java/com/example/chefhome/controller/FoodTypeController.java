@@ -1,9 +1,7 @@
 package com.example.chefhome.controller;
 
-import com.example.chefhome.main.Food;
 import com.example.chefhome.main.FoodType;
 import com.example.chefhome.main.HttpResult;
-import com.example.chefhome.main.Order;
 import com.example.chefhome.repository.FoodRepository;
 import com.example.chefhome.repository.FoodTypeRepository;
 import com.example.chefhome.units.HttpResultUtil;

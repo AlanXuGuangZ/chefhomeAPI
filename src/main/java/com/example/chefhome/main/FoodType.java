@@ -15,19 +15,8 @@ public class FoodType {
     @Column(name = "name")
     private String name;
 
-//    @Column(name = "test")
-//    private String test;
-
     @OneToMany(mappedBy = "foodType",cascade = CascadeType.ALL,fetch = FetchType.EAGER)
     private Set<Food> foods = new HashSet<Food>();
-
-//    public String getTest() {
-//        return test;
-//    }
-//
-//    public void setTest(String test) {
-//        this.test = test;
-//    }
 
     public Integer getId() {
         return id;
