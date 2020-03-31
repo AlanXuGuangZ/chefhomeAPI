@@ -1,6 +1,7 @@
 package com.example.chefhome.controller;
 
 import com.example.chefhome.main.HttpResult;
+import com.example.chefhome.main.Order;
 import com.example.chefhome.main.User;
 import com.example.chefhome.repository.AddressRepository;
 import com.example.chefhome.repository.UserRepository;
@@ -10,6 +11,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
@@ -41,6 +43,19 @@ public class UserController {
             return HttpResultUtil.success(userRepository.findOne(uid));
         } catch (Exception e){
             return HttpResultUtil.error(400,"获取用户id地址数据失败: " + e.toString());
+        }
+    }
+
+    //插入
+    @PostMapping("/user/insert")
+    public HttpResult<User> insertUser(User user){
+        logger.info("插入用户数据");
+        try {
+            User save = userRepository.save(user);
+            return HttpResultUtil.success(save);
+        } catch (Exception e){
+            return HttpResultUtil.error(400,"插入用户数据失败： " + e.toString());
+
         }
     }
 
