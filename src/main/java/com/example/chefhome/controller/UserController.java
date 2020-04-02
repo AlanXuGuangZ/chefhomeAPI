@@ -5,6 +5,7 @@ import com.example.chefhome.main.Order;
 import com.example.chefhome.main.User;
 import com.example.chefhome.repository.AddressRepository;
 import com.example.chefhome.repository.UserRepository;
+import com.example.chefhome.service.UserService;
 import com.example.chefhome.units.HttpResultUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -22,7 +23,8 @@ public class UserController {
 
     @Autowired
     AddressRepository addressRepository;
-
+    @Autowired
+    private UserService userService;
     private final static Logger logger = LoggerFactory.getLogger(UserController.class);
 
     // 查询
@@ -44,6 +46,10 @@ public class UserController {
         } catch (Exception e){
             return HttpResultUtil.error(400,"获取用户id地址数据失败: " + e.toString());
         }
+    }
+    @GetMapping(value = "/user/phone/{phone}")
+    public HttpResult userListByPhoneNum(@PathVariable("phone") String phoneNum) {
+        return userService.UserOnlyOnePhone(phoneNum);
     }
 
     //插入

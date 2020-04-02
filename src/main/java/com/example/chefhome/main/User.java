@@ -15,7 +15,6 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY) //自增主键
     private Integer id;
 
-    @Column(name = "phonenum")
     private String phonenum;
 
     @JsonIgnore
@@ -33,6 +32,10 @@ public class User {
     @JsonIgnore
     @OneToMany(mappedBy = "auser",cascade = CascadeType.ALL,fetch = FetchType.EAGER)
     private Set<UserAddress> userAddresses = new HashSet<UserAddress>();
+
+    public User() {
+
+    }
 
     public Set<UserAddress> getUserAddresses() {
         return userAddresses;
