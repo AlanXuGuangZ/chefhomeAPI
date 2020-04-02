@@ -1,11 +1,9 @@
 package com.example.chefhome.controller;
 
 import com.example.chefhome.main.HttpResult;
-import com.example.chefhome.main.Order;
 import com.example.chefhome.main.User;
 import com.example.chefhome.repository.AddressRepository;
 import com.example.chefhome.repository.UserRepository;
-import com.example.chefhome.service.UserService;
 import com.example.chefhome.units.HttpResultUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -23,8 +21,8 @@ public class UserController {
 
     @Autowired
     AddressRepository addressRepository;
+
     @Autowired
-    private UserService userService;
     private final static Logger logger = LoggerFactory.getLogger(UserController.class);
 
     // 查询
@@ -49,7 +47,11 @@ public class UserController {
     }
     @GetMapping(value = "/user/phone/{phone}")
     public HttpResult userListByPhoneNum(@PathVariable("phone") String phoneNum) {
-        return userService.UserOnlyOnePhone(phoneNum);
+        if (phoneNum.equals(userRepository.findByPhonenum(phoneNum).getPhonenum())) {
+            return HttpResultUtil.error(1,"已经注册");
+        }else {
+            return HttpResultUtil.success(userRepository.findByPhonenum(phoneNum));
+        }
     }
 
     //插入
