@@ -45,12 +45,13 @@ public class UserController {
             return HttpResultUtil.error(400,"获取用户id地址数据失败: " + e.toString());
         }
     }
+
     @GetMapping(value = "/user/phone/{phone}")
     public HttpResult userListByPhoneNum(@PathVariable("phone") String phoneNum) {
         if (phoneNum.equals(userRepository.findByPhonenum(phoneNum).getPhonenum())) {
             return HttpResultUtil.error(1,"已经注册");
         }else {
-            return HttpResultUtil.success(userRepository.findByPhonenum(phoneNum));
+            return HttpResultUtil.success(2,"未注册");
         }
     }
 
