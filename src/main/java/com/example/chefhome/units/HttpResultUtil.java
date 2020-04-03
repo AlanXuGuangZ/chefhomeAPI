@@ -3,9 +3,6 @@ package com.example.chefhome.units;
 import com.example.chefhome.main.HttpResult;
 
 
-/**
- * created by tony on 2020/3/25 23:59
- */
 public class HttpResultUtil {
 
     public static HttpResult success(Object object) {
@@ -26,6 +23,14 @@ public class HttpResultUtil {
         HttpResult httpResult = new HttpResult();
         httpResult.setCod(cod);
         httpResult.setMsg(msg);
+        return httpResult;
+    }
+
+    public static HttpResult error(Integer cod,String msg,Object object) {
+        HttpResult httpResult = new HttpResult();
+        httpResult.setCod(cod);
+        httpResult.setMsg(msg);
+        httpResult.setData(object);
         return httpResult;
     }
 

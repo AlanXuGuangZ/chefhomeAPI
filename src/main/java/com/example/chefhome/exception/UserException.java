@@ -2,9 +2,7 @@ package com.example.chefhome.exception;
 
 import com.example.chefhome.enums.ResultEnum;
 
-/**
- * created by tony on 2020/4/4 00:42
- */
+
 public class UserException extends RuntimeException{
 
     private Integer cod;

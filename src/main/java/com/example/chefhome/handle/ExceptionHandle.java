@@ -9,9 +9,7 @@ import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-/**
- * created by tony on 2020/4/4 00:38
- */
+
 @ControllerAdvice
 public class ExceptionHandle {
     private final static Logger logger = LoggerFactory.getLogger(ExceptionHandle.class);

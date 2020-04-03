@@ -49,7 +49,7 @@ public class UserController {
     @GetMapping(value = "/user/phone/{phone}")
     public HttpResult userListByPhoneNum(@PathVariable("phone") String phoneNum) {
         if (phoneNum.equals(userRepository.findByphonenum(phoneNum).getPhonenum())) {
-            return HttpResultUtil.error(1,userRepository.findByphonenum(phoneNum).getUid());
+            return HttpResultUtil.error(1,"已注册",userRepository.findByphonenum(phoneNum).getUid());
         }else {
             return HttpResultUtil.success(2,"未注册");
         }
