@@ -20,6 +20,8 @@ public class Address {
     @Column(name = "name")
     private String name;
 
+    private String uid;
+
     @OneToMany(mappedBy = "address",cascade = CascadeType.ALL,fetch = FetchType.EAGER)
     private Set<UserAddress> userAddresses = new HashSet<UserAddress>();
 
@@ -30,7 +32,12 @@ public class Address {
     public void setUserAddresses(Set<UserAddress> userAddresses) {
         this.userAddresses = userAddresses;
     }
-
+    private String getUid() {
+        return uid;
+    }
+    private void setUid(String uid) {
+        this.uid = uid;
+    }
     public Integer getId() {
         return id;
     }

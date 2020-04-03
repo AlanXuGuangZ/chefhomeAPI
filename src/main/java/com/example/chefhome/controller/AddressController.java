@@ -33,6 +33,16 @@ public class AddressController {
             return HttpResultUtil.error(400,"获取地址数据失敗： " + e.toString());
         }
     }
+    //通过uid查询
+    @GetMapping(value = "/address/{uid}")
+    public HttpResult<Address> uidAddressList(@PathVariable("uid") String uid) {
+        logger.info("通过uid查询地址列表");
+        try {
+            return HttpResultUtil.success(addressRepository.findByuid(uid));
+        }catch (Exception e) {
+            return HttpResultUtil.error(400,"查询失败：" + e.toString());
+        }
+    }
 
     @GetMapping(value = "/address/{aid}")
     public HttpResult<Address> idAddressList(@PathVariable("aid") Integer aid){

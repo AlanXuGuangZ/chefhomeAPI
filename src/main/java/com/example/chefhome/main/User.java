@@ -6,6 +6,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
+import java.util.UUID;
 
 @Entity
 @Table(name = "user")
@@ -17,6 +18,7 @@ public class User {
 
     private String phonenum;
 
+    private String uid;
     @JsonIgnore
     @OneToMany(mappedBy = "ouser",cascade = CascadeType.ALL,fetch = FetchType.EAGER)
     private Set<UserOrder> userOrders = new HashSet<UserOrder>();
@@ -36,7 +38,12 @@ public class User {
     public User() {
 
     }
-
+    public String getUid() {
+        return uid;
+    }
+    public void setUid(String uid) {
+        this.uid = uid;
+    }
     public Set<UserAddress> getUserAddresses() {
         return userAddresses;
     }
