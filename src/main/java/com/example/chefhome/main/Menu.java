@@ -5,8 +5,10 @@ import javax.persistence.*;
 @Table(name ="menu")
 public class Menu {
 
-    @Id
-    @GeneratedValue
+    @Id //主键
+    @GeneratedValue(strategy = GenerationType.IDENTITY) //自增主键
+    private Integer id;
+
     @Column(name = "menuname")
     private String menuname;
     @Column(name = "cuisine")
@@ -34,6 +36,14 @@ public class Menu {
 
     }
 
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
     public String getMenuname() {
         return menuname;
     }
@@ -53,6 +63,7 @@ public class Menu {
     public Integer getReceivenum() {
         return receivenum;
     }
+
     public void setReceivenum(Integer receivenum) {
         this.receivenum = receivenum;
     }
