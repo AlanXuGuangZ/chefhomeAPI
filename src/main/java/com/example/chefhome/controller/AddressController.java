@@ -34,7 +34,7 @@ public class AddressController {
         }
     }
     //通过uid查询
-    @GetMapping(value = "/address/{uid}")
+    @GetMapping(value = "/address/uid/{uid}")
     public HttpResult<Address> uidAddressList(@PathVariable("uid") String uid) {
         logger.info("通过uid查询地址列表");
         try {

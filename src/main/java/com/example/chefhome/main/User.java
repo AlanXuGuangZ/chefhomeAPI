@@ -18,7 +18,9 @@ public class User {
 
     private String phonenum;
 
+    @Column
     private String uid;
+
     @JsonIgnore
     @OneToMany(mappedBy = "ouser",cascade = CascadeType.ALL,fetch = FetchType.EAGER)
     private Set<UserOrder> userOrders = new HashSet<UserOrder>();
@@ -35,15 +37,14 @@ public class User {
     @OneToMany(mappedBy = "auser",cascade = CascadeType.ALL,fetch = FetchType.EAGER)
     private Set<UserAddress> userAddresses = new HashSet<UserAddress>();
 
-    public User() {
-
-    }
     public String getUid() {
         return uid;
     }
+
     public void setUid(String uid) {
         this.uid = uid;
     }
+
     public Set<UserAddress> getUserAddresses() {
         return userAddresses;
     }

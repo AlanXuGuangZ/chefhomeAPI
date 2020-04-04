@@ -20,6 +20,7 @@ public class Address {
     @Column(name = "name")
     private String name;
 
+    @Column(name = "uid")
     private String uid;
 
     @OneToMany(mappedBy = "address",cascade = CascadeType.ALL,fetch = FetchType.EAGER)
@@ -32,12 +33,15 @@ public class Address {
     public void setUserAddresses(Set<UserAddress> userAddresses) {
         this.userAddresses = userAddresses;
     }
-    private String getUid() {
+
+    public String getUid() {
         return uid;
     }
-    private void setUid(String uid) {
+
+    public void setUid(String uid) {
         this.uid = uid;
     }
+
     public Integer getId() {
         return id;
     }

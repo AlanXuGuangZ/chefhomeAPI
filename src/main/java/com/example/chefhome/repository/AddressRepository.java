@@ -7,5 +7,5 @@ import java.util.List;
 
 public interface AddressRepository extends JpaRepository<Address,Integer> {
 
-    public List<Address> findByuid(String uid);
+    List<Address> findByuid(String uid);
 }
