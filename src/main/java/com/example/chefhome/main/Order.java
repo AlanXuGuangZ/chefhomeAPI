@@ -42,6 +42,8 @@ public class Order {
     @Column(name = "chefname")
     private String chefname;
 
+    private String uid;
+
     @OneToMany(mappedBy = "order",cascade = CascadeType.ALL,fetch = FetchType.EAGER)
     private Set<UserOrder> userOrders = new HashSet<UserOrder>();
 
@@ -52,7 +54,10 @@ public class Order {
     public void setUserOrders(Set<UserOrder> userOrders) {
         this.userOrders = userOrders;
     }
-
+    public String getUid(){return uid;}
+    public void  setUid(String uid) {
+        this.uid = uid;
+    }
     public Integer getId() {
         return id;
     }

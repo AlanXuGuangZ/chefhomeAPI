@@ -43,7 +43,15 @@ public class OrderController {
         } catch (Exception e){
             return HttpResultUtil.error(400,"根据id搜索订单数据失败： " + e.toString());
         }
-
+    }
+    @GetMapping("/order/uid/{uid}")
+    public HttpResult<Order> getUidOrder(@PathVariable("uid") String uid) {
+        logger.info("根据uid搜索订单数据");
+        try {
+            return HttpResultUtil.success(orderRepository.findByuid(uid));
+        } catch (Exception e){
+            return HttpResultUtil.error(400,"根据uid搜索订单数据失败： " + e.toString());
+        }
     }
 
     //插入
