@@ -21,6 +21,9 @@ public class Feast {
     @Column(name = "image")
     private String image;
 
+    @Column(name = "name")
+    private String name;
+
     @JsonIgnore
     @ManyToOne(targetEntity = FeastType.class,fetch = FetchType.LAZY)
     @JoinColumn(name = "ftid",referencedColumnName = "id")
@@ -29,6 +32,10 @@ public class Feast {
     public FeastType getFeastType() {
         return feastType;
     }
+
+    public String getName() { return name; }
+
+    public void setName(String name) { this.name = name; }
 
     public void setFeastType(FeastType feastType) {
         this.feastType = feastType;
