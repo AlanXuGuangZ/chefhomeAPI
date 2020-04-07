@@ -34,6 +34,18 @@ public class Food {
     @JoinColumn(name = "tid",referencedColumnName = "id")
     private FoodType foodType;
 
+
+//    @OneToMany(mappedBy = "food",cascade = CascadeType.ALL,fetch = FetchType.EAGER)
+//    private Set<FoodChef> foodChefs = new HashSet<FoodChef>();
+//
+//    public Set<FoodChef> getFoodChefs() {
+//        return foodChefs;
+//    }
+//
+//    public void setFoodChefs(Set<FoodChef> foodChefs) {
+//        this.foodChefs = foodChefs;
+//    }
+
     public Set<Chef> getChefs() {
         return chefs;
     }

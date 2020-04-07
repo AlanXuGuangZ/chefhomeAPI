@@ -35,6 +35,17 @@ public class Chef {
     @ManyToMany(mappedBy = "chefs")
     private Set<Food> foods = new HashSet<Food>();
 
+//    @OneToMany(mappedBy = "chef",cascade = CascadeType.ALL,fetch = FetchType.EAGER)
+//    private Set<FoodChef> foodChefs = new HashSet<FoodChef>();
+//
+//    public Set<FoodChef> getFoodChefs() {
+//        return foodChefs;
+//    }
+//
+//    public void setFoodChefs(Set<FoodChef> foodChefs) {
+//        this.foodChefs = foodChefs;
+//    }
+
     public Set<Food> getFoods() {
         return foods;
     }
