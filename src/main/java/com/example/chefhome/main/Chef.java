@@ -1,6 +1,9 @@
 package com.example.chefhome.main;
 
+//import com.example.chefhome.units.ChefSerializer;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
 import javax.persistence.*;
 import java.util.HashSet;
@@ -28,12 +31,12 @@ public class Chef {
     private String introduce;
     @Column(name = "pick")
     private Integer pick;
-    public Chef(){}
 
-
-    @JsonIgnore
-    @ManyToMany(mappedBy = "chefs")
-    private Set<Food> foods = new HashSet<Food>();
+//    @JsonSerialize(using = ChefSerializer.class)
+    @ManyToMany(targetEntity = Menu.class)
+    @JoinTable(name = "foodchef", joinColumns = {@JoinColumn(name = "cid",referencedColumnName = "id")},
+            inverseJoinColumns = {@JoinColumn(name = "fid",referencedColumnName = "id")})
+    private Set<Menu> menus = new HashSet<Menu>();
 
 //    @OneToMany(mappedBy = "chef",cascade = CascadeType.ALL,fetch = FetchType.EAGER)
 //    private Set<FoodChef> foodChefs = new HashSet<FoodChef>();
@@ -46,13 +49,6 @@ public class Chef {
 //        this.foodChefs = foodChefs;
 //    }
 
-    public Set<Food> getFoods() {
-        return foods;
-    }
-
-    public void setFoods(Set<Food> foods) {
-        this.foods = foods;
-    }
 
     public Integer getId() {
         return id;
@@ -108,5 +104,13 @@ public class Chef {
 
     public void setPick(Integer pick) {
         this.pick = pick;
+    }
+
+    public Set<Menu> getMenus() {
+        return menus;
+    }
+
+    public void setMenus(Set<Menu> menus) {
+        this.menus = menus;
     }
 }
