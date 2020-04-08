@@ -23,7 +23,7 @@ public class Food {
     @Column(name = "image")
     private String image;
 
-    @ManyToMany(targetEntity = Chef.class)
+    @ManyToMany(targetEntity = ChefCopy.class)
     @JoinTable(name = "foodchef", joinColumns = {@JoinColumn(name = "fid",referencedColumnName = "id")},
             inverseJoinColumns = {@JoinColumn(name = "cid",referencedColumnName = "id")})
     private Set<Chef> chefs = new HashSet<Chef>();
